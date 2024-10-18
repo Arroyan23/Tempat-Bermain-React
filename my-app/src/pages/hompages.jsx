@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 // implementasikan ke dalam file
 import { useState, useEffect } from "react";
+// relatif terhadap folder my-app
+import "/public/style/homepages.css";
 
 function HomePage() {
   const [todos, setToDo] = useState([]);
@@ -105,9 +107,10 @@ function HomePage() {
                       <th key={index}>{index + 1}</th>
                       <th
                         key={index}
-                        className={
+                        className={`hover-pointer ${
                           todo.completed ? "text-decoration-line-through" : ""
-                        }
+                        }`}
+                        onClick={() => toggleCompleted(index)}
                       >
                         {todo.text}
                       </th>
