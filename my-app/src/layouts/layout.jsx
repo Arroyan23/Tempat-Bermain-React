@@ -27,7 +27,7 @@ function RootLayout() {
                 <a
                   className="nav-link active text-white"
                   aria-current="page"
-                  href="#"
+                  href="/todo"
                 >
                   To-Do-List App
                 </a>
@@ -38,8 +38,8 @@ function RootLayout() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="#">
-                  Kasus Favian
+                <a className="nav-link text-white" href="/weather">
+                  Weather API
                 </a>
               </li>
             </ul>

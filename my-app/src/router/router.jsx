@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/hompages";
 import RootLayout from "../layouts/layout";
 import MoviePage from "../pages/movie/movie";
+import Weather from "../pages/weather";
 
 export const router = createBrowserRouter([
   {
@@ -10,12 +11,16 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "/",
+        path: "/todo",
         element: <HomePage />,
       },
       {
         path: "/movie",
         element: <MoviePage />,
+      },
+      {
+        path: "/weather",
+        element: <Weather />,
       },
     ],
   },
