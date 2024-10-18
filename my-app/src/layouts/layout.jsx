@@ -33,7 +33,7 @@ function RootLayout() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="#">
+                <a className="nav-link text-white" href="/movie">
                   Movie API App
                 </a>
               </li>
