@@ -4,6 +4,7 @@ import HomePage from "../pages/hompages";
 import RootLayout from "../layouts/layout";
 import MoviePage from "../pages/movie/movie";
 import Weather from "../pages/weather";
+import Favian from "../pages/kasusfavian/favian";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "/weather",
         element: <Weather />,
+      },
+      {
+        path: "/kasusfavian",
+        element: <Favian />,
       },
     ],
   },

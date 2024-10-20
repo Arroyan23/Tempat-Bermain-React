@@ -1,0 +1,33 @@
+[
+  {
+    "id": 92837,
+    "nama": "Favian Rasyad",
+    "kasus": ["Melakukan tindakan asusila"]
+  },
+  {
+    "id": 35243,
+    "nama": "Bobi Favian Rasyad",
+    "kasus": [
+      "Melakukan kekerasan pada rumah tangga",
+      "Menjadikan patung sebagai teman",
+      "Tindakan bunuh diri"
+    ]
+  },
+  {
+    "id": 92834,
+    "nama": "Sammy Muhammad",
+    "kasus": [
+      "Menjadikan samsak sebagai teman",
+      "Percobaan pembunuhan terhadap favian rasyad",
+      "Menjadikan sesuatu menjadi up Normal"
+    ]
+  },
+  {
+    "id": 83028,
+    "nama": "Azzam Wartaputra",
+    "kasus": [
+      "Mensigmakan orang lain secara ilegal",
+      "Tidak mengidahkan peraturan sigma"
+    ]
+  }
+]
