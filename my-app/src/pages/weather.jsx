@@ -2,11 +2,15 @@
 // import "/public/style/weather.css";
 // untuk memanggil fetch data dari api nya
 import { useState, useEffect } from "react";
+import SearchLocation from "../components/searchlocation";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Weather() {
   // fetch data dengan use Effect
   const [weatherCondition, setWeatherCondition] = useState([]);
   const [mainWeather, setMainWeather] = useState({});
+  const [location, setLocation] = useState("");
+  const [searchLocation, setSearchLocation] = useState("");
 
   //   untuk menampilkan waktu dan bisa di update dengan tiap 1 detik
   // untuk setting bagian hanya menunjukan jam dan menit
@@ -29,18 +33,31 @@ function Weather() {
 
   useEffect(() => {
     fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=Jakarta,ID&appid=f85acfd052751e17212bdb481758b7f2"
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchLocation},ID&appid=f85acfd052751e17212bdb481758b7f2`
     )
       .then((response) => response.json())
       .then((responses) => {
-        setWeatherCondition(responses.weather);
-        setMainWeather(responses.main);
+        if (responses.coord) {
+          setWeatherCondition(responses.weather);
+          setMainWeather(responses.main);
+          setLocation(responses.name);
+        } else {
+          setWeatherCondition(responses.cod);
+          setMainWeather(responses.message);
+          setLocation(responses.message);
+        }
       });
-  }, []);
+  }, [searchLocation]);
 
   const changeToCelcius = (kelvin) => {
     const celcius = Math.floor(kelvin - 273.15);
     return celcius;
+  };
+
+  // untuk mengatur fitur search dari props
+
+  const handleSearch = (value) => {
+    setSearchLocation(value);
   };
 
   return (
@@ -49,6 +66,7 @@ function Weather() {
     dengan menggunakan map */}
       <div className="container">
         <h1>Cuaca Di Jakarta</h1>
+        <SearchLocation onSearch={handleSearch} />
         <div
           class="row d-flex justify-content-center py-5 "
           style={{ maxWidth: "100%" }}
@@ -57,19 +75,28 @@ function Weather() {
             <div class="card text-body" style={{ borderRadius: "35px" }}>
               <div class="card-body p-4">
                 <div class="d-flex">
-                  <h6 class="flex-grow-1">Jakarta</h6>
+                  <h6 class="flex-grow-1">{location}</h6>
                   <h6>{time}</h6>
                 </div>
 
                 <div class="d-flex flex-column text-center mt-5 mb-4">
                   <h6 class="display-4 mb-0 font-weight-bold">
                     {" "}
-                    {changeToCelcius(mainWeather.feels_like)}°C{" "}
+                    {typeof mainWeather.feels_like === "number" ? (
+                      changeToCelcius(mainWeather.feels_like)
+                    ) : (
+                      <i class="bi bi-search"></i>
+                    )}
+                    °C{" "}
                   </h6>
                   <span class="small" style={{ color: "#868B94" }}>
-                    {weatherCondition.map((e, i) => {
-                      return <div className="">{e.main}</div>;
-                    })}
+                    {Array.isArray(weatherCondition) ? (
+                      weatherCondition.map((e, i) => {
+                        return <div className="">{e.main}</div>;
+                      })
+                    ) : (
+                      <div className="">No Data</div>
+                    )}
                   </span>
                 </div>
 

@@ -1,3 +1,5 @@
 Package yang di download:
+tambahan:
+1. bootstrap-icons
 
 npm install react react-dom react-router-dom bootstrap
